@@ -1,4 +1,4 @@
-// Last updated: 13/04/2025, 00:33:11
+// Last updated: 13/04/2025, 00:33:39
 class Solution {
     long countNumbers(long x,int limit,long num,long sLen){
         //2000
