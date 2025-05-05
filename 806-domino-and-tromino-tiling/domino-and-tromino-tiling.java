@@ -18,6 +18,15 @@ class Solution {
          (i,2)T      2*(i+1,2) 2*(i+1,3)
          (i,3)V one  2*(i+2,0) 2*(i+1,3)
 
+        ---------Final Solution-------------
+         (i,0) prev ended at same height
+           -> (i+1,0) - horzontal
+              (i+2,0) - 2 vertical
+              (i+1,1)*2 - put tromino
+         (i,1) one from prev is still continues
+           -> (i+2,0) - put reverse tromino
+              (i+1,1) - put one vertical in empty spot
+
           
         */
         this.n=n;
