@@ -42,9 +42,9 @@ class Solution {
         if(x==2){
             return dp[i][x]=(findWays(i+2,0) +findWays(i+1,2))%mod;
         }
-        if(x==2){
-            return dp[i][x]=(findWays(i+2,0) +findWays(i+1,2))%mod;
-        }
+        /*if(x==3){
+            return dp[i][x]=(findWays(i+2,0) +findWays(i+1,3))%mod;
+        }*/
         return 0;
     }
 }
