@@ -8,7 +8,7 @@ public:
         int tl=l1+l2;
         int low=0,high=l1-1;
         double leftx,rightx,lefty,righty;
-        while(low-high<=1)
+        while(high-low>=-1)
         {
             int partx=low+(high-low)/2;
             int party=(tl+1)/2-partx;
