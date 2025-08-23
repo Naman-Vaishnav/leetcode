@@ -30,7 +30,7 @@ class Solution {
  
 
         //split horizontal
-        for(int i=rowStart;i<=rowEnd;i++){
+        for(int i=0;i<=n-1;i++){
             int[] upperPart=minimumAreaOne(grid,rowStart,i,colStart,colEnd);
             int[] lowerPart=minimumAreaOne(grid,i+1,rowEnd,colStart,colEnd);
 
@@ -70,7 +70,7 @@ class Solution {
 
 
         //split vertical
-        for(int i=colStart;i<=colEnd;i++){
+        for(int i=0;i<=m-1;i++){
             int[] leftPart=minimumAreaOne(grid,rowStart,rowEnd,colStart,i);
             int[] rightPart=minimumAreaOne(grid,rowStart,rowEnd,i+1,colEnd);
 
