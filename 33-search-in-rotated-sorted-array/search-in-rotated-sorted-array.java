@@ -13,8 +13,9 @@ class Solution {
                 else r=m;
             }
         }
-        if(l!=-1&&nums[l]==target)return l;
+       
         if(r!=nums.length&&nums[r]==target)return r;
+         if(l!=-1&&nums[l]==target)return l;
        
         return -1;
     }
