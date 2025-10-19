@@ -9,7 +9,7 @@ class Solution {
                ans++;
                min++;
             }
-            else if(min<nums[i]-k){
+            else if(min+1<=nums[i]-k){
                 min=nums[i]-k;
                 ans++;
             }
