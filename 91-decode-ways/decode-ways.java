@@ -9,7 +9,7 @@ class Solution {
 
     int findWays(int i,String s){
         if(i==s.length())return 1;
-        if(i>s.length())return 0;
+        //if(i>s.length())return 0;
         if(dp[i]!=-1)return dp[i];
         int ans=0;
         int first=s.charAt(i)-'0';
