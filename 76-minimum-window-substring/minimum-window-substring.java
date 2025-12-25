@@ -1,43 +1,43 @@
 class Solution {
     public String minWindow(String s, String t) {
-    
-        int l=0,r=0,ans=s.length()+1,idx=0;
-        int freqT[]=new int[128];
-        for(char ch:t.toCharArray())freqT[ch]++;
+        Map<Character,Integer> freqS=new HashMap<>();
+         Map<Character,Integer> freqT=new HashMap<>();
+        for(char ch:t.toCharArray()){
+            freqT.put(ch,freqT.getOrDefault(ch,0)+1);
+        }
+        int l=0,start=0;
+        int ans=Integer.MAX_VALUE;
+        int curMatch=0;
+        for(int r=0;r<s.length();r++){
+            char R=s.charAt(r);
+            freqS.put(R,freqS.getOrDefault(R,0)+1);
+            if(freqS.getOrDefault(R,0)<=freqT.getOrDefault(R,0))curMatch++;
 
-        int foundInWin=0;    
-         
-         int freqWin[]=new int[128];
-        for(r=0;r<s.length();r++){
-            freqWin[s.charAt(r)]++;
-
-            if(freqWin[s.charAt(r)]<=freqT[s.charAt(r)])foundInWin++;
-
-            
-            while(l<=r&&freqWin[s.charAt(l)]>freqT[s.charAt(l)]){
-                freqWin[s.charAt(l)]--;
+            while(l<=r&&freqS.getOrDefault(s.charAt(l),0)>freqT.getOrDefault(s.charAt(l),0)){
+                freqS.put(s.charAt(l),freqS.get(s.charAt(l))-1);
                 l++;
             }
-
-        
-            if(foundInWin==t.length()){
-                if(ans>r-l+1){
-                    ans=r-l+1;
-                    idx=l;
-                }
-                
+            
+            if(curMatch>=t.length()&&ans>r-l+1){
+                ans=Math.min(ans,r-l+1);
+                start=l;
             }
 
         }
-        return ans==s.length()+1?"":s.substring(idx,idx+ans);
+
+        if(ans!=Integer.MAX_VALUE)return s.substring(start,ans+start);
+        return "";
 
     }
 }
+
 /**
-freq[] t
-l r
- check if same as freq of t
- while l<=r freqWin[l]>freqT[l]
-    l++
- check if all of freqWin >= freqT[]
+ADOBECODEBANC
+ABC
+freqS
+freqT - pre
+
+include r freqS++
+while(freqS[l]>freqT[l])l++
+if all 26 update ans
  */
