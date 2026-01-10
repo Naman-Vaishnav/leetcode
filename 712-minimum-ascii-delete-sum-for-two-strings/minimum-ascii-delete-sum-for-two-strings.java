@@ -4,26 +4,34 @@ class Solution {
         int n=s1.length(),m=s2.length();
         dp=new Integer[n+1][m+1];
         //return findMin(0,0,s1,s2);
-
-        dp[0][0]=0;
+        int[] prev=new int[m+1];
+        int[] cur=new int[m+1];
+        //dp[0][0]=0;
+        prev[0]=cur[0]=0;
         for(int j=1;j<=m;j++){
-            dp[0][j]=dp[0][j-1]+s2.charAt(j-1);
+            //dp[0][j]=dp[0][j-1]+s2.charAt(j-1);
+            prev[j]=prev[j-1]+s2.charAt(j-1);
         }
+        // for(int i=1;i<=n;i++){
+        //     dp[i][0]=dp[i-1][0]+s1.charAt(i-1);
+        // }
         for(int i=1;i<=n;i++){
-            dp[i][0]=dp[i-1][0]+s1.charAt(i-1);
-        }
-        for(int i=1;i<=n;i++){
+            cur[0]=s1.charAt(i-1)+prev[0];
             for(int j=1;j<=m;j++){
-                if(s1.charAt(i-1)==s2.charAt(j-1))dp[i][j]=dp[i-1][j-1];
+                if(s1.charAt(i-1)==s2.charAt(j-1))cur[j]=prev[j-1];
                 else{
-                    int delI=s1.charAt(i-1)+dp[i-1][j];
-                    int delJ=s2.charAt(j-1)+dp[i][j-1];
-                    int delIJ=s1.charAt(i-1)+s2.charAt(j-1)+dp[i-1][j-1];
-                    dp[i][j]=Math.min(delI,Math.min(delJ,delIJ));
+                    int delI=s1.charAt(i-1)+prev[j];
+                    int delJ=s2.charAt(j-1)+cur[j-1];
+                    //int delIJ=s1.charAt(i-1)+s2.charAt(j-1)+prev[j-1];
+                    cur[j]=Math.min(delI,delJ);
                 }
             }
+            int[] temp=prev;
+            prev=cur;
+            cur=temp;
         }
-        return dp[n][m];
+        return prev[m];
+        //return dp[n][m];
 
     }
 
@@ -70,4 +78,11 @@ delete"
     [i]+(i+1,j)
     [j]+(i,j+1)
     [i]+[j]+(i+1,j+1)
+
+    (i,j)
+    if(i)
+        [i]==[j]->1+(i+1,j+1,true)
+        else (i+1,j,is)
+       
+        (i,j+1,false)
 */
